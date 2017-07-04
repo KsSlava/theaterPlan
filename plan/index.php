@@ -4,12 +4,11 @@ define('ROOT', dirname(__FILE__));
 require ROOT.'/app/components/Router.php';
 
 
-$r = new Router;
-
-echo $r->getURL();
 
 
+$a = new Router;
 
+print_r ($a->run());
 
 
 
