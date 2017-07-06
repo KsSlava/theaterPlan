@@ -1,12 +1,18 @@
 <?php 
 
-class Plan {
+include_once (ROOT.'/app/models/Plan.php');
 
-	public function List() 
+
+class PlanController{
+
+
+	public static function View($id)
 	{
 
-        return "list";
-
+	    
+          
+           $r = Plan::ViewPlanById($id);
+           return  $r;
 	}
 
 

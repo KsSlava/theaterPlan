@@ -2,7 +2,7 @@
 
 
 /**
-* 789
+* Router
 */
 class Router 
 {
@@ -33,24 +33,53 @@ class Router
 
  	 	foreach ($this->routes as $url => $ControllerAction) {
  	 		
- 	 		if(preg_match('~'.$url.'~', $this->getURL()))
+ 	 		if(preg_match('~'.$url.'~', $this->getURL() ))
  	 		{
- 	 			$segments = explode('/', $ControllerAction);
 
- 	 			$controllerName  = $segments[0];
+ 	 			$internalRoute = preg_replace('~'.$url.'~', $ControllerAction, $this->getURL() );
 
- 	 			 $controllerName.'Controller.php'; 
- 	 			 $actionName 
+ 	 		    $segments = explode('/', $internalRoute);
+
+ 	 		    /**
+				The first (0) segment unuse, becouse its a foldername of script.
+ 	 		    */
+			    array_shift($segments);
+
+
+                	$controllerName = ucfirst(array_shift($segments)).'Controller';
+                	
+		 		    $action     = ucfirst(array_shift($segments));
+
+		 		    $params		= $segments;	
+
+ 		   		 	
+					
+						$controllerFile = ROOT.'/app/controllers/'.$controllerName.'.php'; 
+
+						if(file_exists($controllerFile)) 
+						{
+
+							include_once($controllerFile);
+
+							$controllerObj = new $controllerName;
+
+							//$result = $controllerObj->$action($params);
+
+
+				
+							$result = call_user_func_array( array($controllerObj, $action), $params );
+
+						}	
+
+  							return $result; 
+
+					
+
  	 		}
 
  	 	}
-
- 	 	; 
+ 	 	
    	}
-
-
-
-
 	
 }
 
