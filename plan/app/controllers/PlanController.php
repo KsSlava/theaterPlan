@@ -8,12 +8,28 @@ class PlanController{
 
 	public static function View($id)
 	{
-
-	    
-          
-           $r = Plan::ViewPlanById($id);
-           return  $r;
+	             
+           $result = Plan::ViewPlanById($id);
+           
+           return  $result;
 	}
+
+
+
+	public static function ViewList()
+	{
+	             
+           $result = Plan::ViewPlanList();
+           
+           return  $result;
+	}
+
+
+
+
+
+
+
 
 
 

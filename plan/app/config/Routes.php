@@ -2,7 +2,7 @@
 
 return array (
 
-	'planList' => 'Plan/Lista',
+	'planList' => 'Plan/ViewList',
 	'planAdd'  => 'Plan/Add',
 	'planEdit' => 'Plan/Edit',
 	'planDel'  => 'Plan/Delete',

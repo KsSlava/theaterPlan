@@ -5,12 +5,6 @@ require ROOT.'/app/components/Router.php';
 require ROOT.'/app/components/Db.php';
 
 
-
-
-
-
-
-
 $a = new Router;
 
 print_r($a->run());
